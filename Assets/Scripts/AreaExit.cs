@@ -8,13 +8,12 @@ public class AreaExit : MonoBehaviour
 
 public string areaToLoad;
 
-    // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
-    void onTriggerEnter2D(Collider2D other) {
+    void OnTriggerEnter2D(Collider2D other) {
         
         if (other.tag == "Player") {
             SceneManager.LoadScene(areaToLoad);
@@ -22,7 +21,6 @@ public string areaToLoad;
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         
