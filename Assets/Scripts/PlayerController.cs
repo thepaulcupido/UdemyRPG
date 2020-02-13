@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour {
 
 	public static PlayerController instance;
 
+	public string areaTransitionName;
+
 	// Use this for initialization
 	void Start () {
 		if (instance == null) {
