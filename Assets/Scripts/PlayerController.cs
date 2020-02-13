@@ -9,8 +9,16 @@ public class PlayerController : MonoBehaviour {
 
 	public Animator myAnim;
 
+	public static PlayerController instance;
+
 	// Use this for initialization
 	void Start () {
+		if (instance == null) {
+			instance = this;
+		} else {
+			Destroy(gameObject);
+		}
+
 		DontDestroyOnLoad(gameObject);
 	}
 	
@@ -24,6 +32,5 @@ public class PlayerController : MonoBehaviour {
 			myAnim.SetFloat("LastMoveX", Input.GetAxisRaw("Horizontal"));
 			myAnim.SetFloat("LastMoveY", Input.GetAxisRaw("Vertical"));
 		}
-
 	}
 }
