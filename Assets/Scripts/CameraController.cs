@@ -23,6 +23,7 @@ public class CameraController : MonoBehaviour
         if (target == null) {
             target = PlayerController.instance.transform;
         }
+        target = FindObjectOfType<PlayerController>().transform;
         
         this.halfHeight = Camera.main.orthographicSize;
         this.halfWidth = halfHeight * Camera.main.aspect;

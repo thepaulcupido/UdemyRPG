@@ -16,10 +16,10 @@ public class PlayerController : MonoBehaviour {
 	private Vector3 bottomLeftLimit;
 
 	// Use this for initialization
-	void Awake () {
+	void Start () {
 		if (instance == null) {
 			instance = this;
-		} else {
+		} else if (instance != this) {
 			Destroy(gameObject);
 		}
 
