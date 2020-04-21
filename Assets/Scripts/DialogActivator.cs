@@ -5,6 +5,7 @@ using UnityEngine;
 public class DialogActivator : MonoBehaviour
 {
 
+    public bool isPerson = true;
     public string[] lines;
 
     private bool canActivate = false;
@@ -18,7 +19,7 @@ public class DialogActivator : MonoBehaviour
     {
         if (canActivate && Input.GetButtonDown("Fire1") && !DialogManager.instance.dialogBox.active) {
             // activate dialog box and update text
-            DialogManager.instance.ShowDialog(lines);
+            DialogManager.instance.ShowDialog(lines, this.isPerson);
         }
     }
 

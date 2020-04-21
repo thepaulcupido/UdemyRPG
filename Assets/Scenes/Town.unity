@@ -12144,6 +12144,79 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41c390f68453d4d3d8dc57ea4b0d8b9c, type: 3}
+--- !u!1 &1330198138
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1330198141}
+  - component: {fileID: 1330198140}
+  - component: {fileID: 1330198139}
+  m_Layer: 0
+  m_Name: Sign
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1330198139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1330198138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba76354548fb84bdb8c190048f912d46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPerson: 0
+  lines:
+  - Welcome to Town
+--- !u!61 &1330198140
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1330198138}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.31345344}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.6269069}
+  m_EdgeRadius: 0
+--- !u!4 &1330198141
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1330198138}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.498, y: 7.51, z: -1.5915937}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1350932423
 GameObject:
   m_ObjectHideFlags: 0
@@ -15141,6 +15214,15 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 1
+  - first: {x: 2, y: 7, z: 0}
+    second:
+      m_TileIndex: 70
+      m_TileSpriteIndex: 70
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
   - first: {x: 5, y: 7, z: 0}
     second:
       m_TileIndex: 0
@@ -15850,6 +15932,8 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 652a034d607e24258833763cbbdcccb2, type: 2}
   - m_RefCount: 8
     m_Data: {fileID: 11400000, guid: 596606eb557e540bbbe7539dad85b94d, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 5588170336d3342d5844e3db4e6ce963, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 3
     m_Data: {fileID: 21300322, guid: af6bc9dfbb9b08e4890cf8e4b8dd00c3, type: 3}
@@ -15991,8 +16075,10 @@ Tilemap:
     m_Data: {fileID: 21300964, guid: af6bc9dfbb9b08e4890cf8e4b8dd00c3, type: 3}
   - m_RefCount: 8
     m_Data: {fileID: 21300966, guid: af6bc9dfbb9b08e4890cf8e4b8dd00c3, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300224, guid: af6bc9dfbb9b08e4890cf8e4b8dd00c3, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 204
+  - m_RefCount: 205
     m_Data:
       e00: 1
       e01: 0
@@ -16011,7 +16097,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 204
+  - m_RefCount: 205
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -16525,10 +16611,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba76354548fb84bdb8c190048f912d46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPerson: 1
   lines:
-  - It works!
-  - Or ....
-  - does it?
+  - n-Girl
+  - Please help me!
+  - n-Player
+  - Is everything okay?
+  - n-Girl
+  - No!
+  - My family was kidnapped by bandits
+  - n-Player
+  - Don't worry
+  - I'll save them!
 --- !u!1 &2147267723 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7468689945958887468, guid: 911d93aaf62a34de693091754261a2ac,
