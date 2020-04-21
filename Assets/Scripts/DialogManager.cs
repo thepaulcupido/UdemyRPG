@@ -15,12 +15,13 @@ public class DialogManager : MonoBehaviour
 
     public int currentLine;
 
+    private bool justStarted = false;
+
+    public static DialogManager instance;
+
     void Start()
     {
-        if (dialogLines.Length > 0) {
-            dialogText.text = dialogLines[0];
-        }
-
+        instance = this;
     }
 
     void NextLine() {
@@ -38,9 +39,23 @@ public class DialogManager : MonoBehaviour
         if (dialogBox.active) {
             // That Fire1 should really be moved into a config file and replaced with a generic variable
             if (Input.GetButtonUp("Fire1")) {
-                NextLine();
+                if (!justStarted) {
+                    NextLine();
+                } else {
+                    justStarted = false;
+                }
             }
         }
 
+    }
+
+    public void ShowDialog(string[] newLines)
+    {
+        dialogLines = newLines;
+        currentLine = 0;
+        dialogText.text = dialogLines[currentLine];
+
+        justStarted = true;
+        dialogBox.SetActive(true);
     }
 }
