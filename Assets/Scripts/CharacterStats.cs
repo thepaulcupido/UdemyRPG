@@ -46,9 +46,11 @@ public class CharacterStats : MonoBehaviour
 
     public void GainExp(int expToGain)
     {
-        this.currentExp += expToGain;
-        if (currentExp >= expToNextLevel[characterLevel]) {
-            // then level up
+
+        if (characterLevel > maxLevel) {
+            currentExp = 0;
+        } else if (currentExp >= expToNextLevel[characterLevel]) {
+            this.currentExp += expToGain;
             currentExp -= expToNextLevel[characterLevel];
             characterLevel++;
 
