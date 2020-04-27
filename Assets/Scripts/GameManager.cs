@@ -35,12 +35,35 @@ public class GameManager : MonoBehaviour
     {
 
         for (int i = 0; i < referenceItem.Length; i ++) {
-            print(referenceItem[i].itemName + " " + itemName);
             if (referenceItem[i].itemName == itemName) {
                 return referenceItem[i];
             }
         }
 
         return null;
+    }
+
+    public void SortItems()
+    {
+
+        bool itemAfterSpace = true;
+
+        while (itemAfterSpace) {
+            itemAfterSpace = false;
+
+            for (int i = 0; i < itemsHeld.Length -1; i ++) {
+               if (itemsHeld[i] == "") {
+                    itemsHeld[i] = itemsHeld[i+1];
+                    itemsHeld[i+1] = "";
+
+                    numberOfItems[i] = numberOfItems[i+1];
+                    numberOfItems[i+1] = 0;
+
+                    if (itemsHeld[i] != "") {
+                        itemAfterSpace = true;
+                    }
+                }
+            }
+        }
     }
 }

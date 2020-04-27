@@ -123,6 +123,8 @@ public class GameMenu : MonoBehaviour
 
     public void ShowItems()
     {
+        GameManager.instance.SortItems();
+
         for (int i = 0; i < itemButtons.Length; i++) {
             itemButtons[i].buttonValue = i;
 
@@ -130,8 +132,6 @@ public class GameMenu : MonoBehaviour
 
             if (GameManager.instance.itemsHeld[i] != "") {
                 itemButtons[i].buttonImage.gameObject.SetActive(true);
-                print(GameManager.instance.itemsHeld[i]);
-                print( GameManager.instance.GetItemDetails(GameManager.instance.itemsHeld[i]));
                 itemButtons[i].buttonImage.sprite = GameManager.instance.GetItemDetails(GameManager.instance.itemsHeld[i]).itemSprite;
                 itemButtons[i].amountText.text = GameManager.instance.numberOfItems[i].ToString();
             } else {
