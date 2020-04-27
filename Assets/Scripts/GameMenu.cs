@@ -11,15 +11,18 @@ public class GameMenu : MonoBehaviour
     // public variables
     public GameObject gameMenu;
     public Text[] nameText, hpText, mpText, levelText, expNextLevelText;
+    public Text statusName, statusHP, statusMP, statusStrength, statusDefence, statusWpnEquip, statusWpnPower, statusArmourEquip, statusAmourPower, statusExp;
+    public Image statusImage;
     public Slider[] expSlider;
     public Image[] characterImage;
     public GameObject[] characterStatHolder;
     public GameObject[] windows;
+    public GameObject[] statusButtons;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        this.UpdateMainStats();
     }
 
     // Update is called once per frame
@@ -35,6 +38,26 @@ public class GameMenu : MonoBehaviour
                 GameManager.instance.gameMenuOpen = true;
                 this.UpdateMainStats();
             }
+        }
+    }
+
+    public void UpdateCharacterStatus(int x)
+    {
+        if (x < playerStats.Length) {
+            statusName.text = "" + playerStats[x].characterName;
+            statusHP.text = "" + playerStats[x].currentHP + "/" + playerStats[x].maxHP;
+            statusMP.text = "" + playerStats[x].currentMp + "/" + playerStats[x].maxMP;
+            statusStrength.text = playerStats[x].strength.ToString();
+            statusDefence.text = playerStats[x].defence.ToString();
+
+            statusWpnPower.text = playerStats[x].weaponPower.ToString();
+            statusAmourPower.text = playerStats[x].armourPower.ToString();
+
+            statusWpnEquip.text = (playerStats[x].equippedWeapn != "") ? playerStats[x].equippedWeapn.ToString() : "None";
+            statusArmourEquip.text = (playerStats[x].equippedArmour != "") ? playerStats[x].equippedArmour.ToString() : "None";
+
+            statusExp.text = (playerStats[x].expToNextLevel[playerStats[x].characterLevel] - playerStats[x].currentExp).ToString();
+            statusImage.sprite = playerStats[x].characterImage;
         }
     }
 
@@ -57,6 +80,18 @@ public class GameMenu : MonoBehaviour
 
         gameMenu.SetActive(false);
         GameManager.instance.gameMenuOpen = false;
+    }
+
+    public void OpenStatus()
+    {
+        // update information
+        UpdateCharacterStatus(0);
+
+        // show buttons
+        for (int x = 0; x < statusButtons.Length; x ++) {
+            statusButtons[x].SetActive(playerStats[x].gameObject.active);
+            statusButtons[x].GetComponentInChildren<Text>().text = playerStats[x].characterName;
+        }
     }
 
     public void UpdateMainStats()

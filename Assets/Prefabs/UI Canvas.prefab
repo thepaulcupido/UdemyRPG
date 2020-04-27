@@ -3248,7 +3248,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3745667574568817230}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4577207152953067681}
+        m_MethodName: UpdateCharacterStatus
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3745667574589375405
 GameObject:
   m_ObjectHideFlags: 0
@@ -3942,7 +3953,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3745667575370751428}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4577207152953067681}
+        m_MethodName: UpdateCharacterStatus
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3745667575408836632
 GameObject:
   m_ObjectHideFlags: 0
@@ -4056,7 +4078,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3745667575408836637}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4577207152953067681}
+        m_MethodName: UpdateCharacterStatus
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3764298205508885223
 GameObject:
   m_ObjectHideFlags: 0
@@ -5236,6 +5269,17 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4577207152953067681}
+        m_MethodName: OpenStatus
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -6560,6 +6604,17 @@ MonoBehaviour:
   - {fileID: 5452904058793110581}
   - {fileID: 5700882423157041701}
   - {fileID: 2553122051656759954}
+  statusName: {fileID: 3745667573762322141}
+  statusHP: {fileID: 3745667574390607684}
+  statusMP: {fileID: 3745667574005807354}
+  statusStrength: {fileID: 3745667575173125134}
+  statusDefence: {fileID: 3745667573804245857}
+  statusWpnEquip: {fileID: 3745667574474830221}
+  statusWpnPower: {fileID: 3745667574504370682}
+  statusArmourEquip: {fileID: 3745667574176878201}
+  statusAmourPower: {fileID: 3745667574987353869}
+  statusExp: {fileID: 3745667573882758465}
+  statusImage: {fileID: 3745667574738800307}
   expSlider:
   - {fileID: 3612618621936138166}
   - {fileID: 7460575755779399539}
@@ -6575,6 +6630,10 @@ MonoBehaviour:
   windows:
   - {fileID: 3013135676624090262}
   - {fileID: 8039188747366901387}
+  statusButtons:
+  - {fileID: 3745667575370751431}
+  - {fileID: 3745667574568817225}
+  - {fileID: 3745667575408836632}
 --- !u!1 &8039188747366901387
 GameObject:
   m_ObjectHideFlags: 0
