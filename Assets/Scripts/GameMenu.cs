@@ -18,14 +18,14 @@ public class GameMenu : MonoBehaviour
     public GameObject[] characterStatHolder;
     public GameObject[] windows;
     public GameObject[] statusButtons;
+    public ItemButton[] itemButtons;
 
-    // Start is called before the first frame update
     void Start()
     {
         this.UpdateMainStats();
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         if (Input.GetButtonDown("Fire2")) {
@@ -117,6 +117,26 @@ public class GameMenu : MonoBehaviour
             } else {
                 characterStatHolder[index].SetActive(false);
                 break;
+            }
+        }
+    }
+
+    public void ShowItems()
+    {
+        for (int i = 0; i < itemButtons.Length; i++) {
+            itemButtons[i].buttonValue = i;
+
+            //GameManager.instance.itemsHeld[i];
+
+            if (GameManager.instance.itemsHeld[i] != "") {
+                itemButtons[i].buttonImage.gameObject.SetActive(true);
+                print(GameManager.instance.itemsHeld[i]);
+                print( GameManager.instance.GetItemDetails(GameManager.instance.itemsHeld[i]));
+                itemButtons[i].buttonImage.sprite = GameManager.instance.GetItemDetails(GameManager.instance.itemsHeld[i]).itemSprite;
+                itemButtons[i].amountText.text = GameManager.instance.numberOfItems[i].ToString();
+            } else {
+                itemButtons[i].buttonImage.gameObject.SetActive(false);
+                itemButtons[i].amountText.text = "";
             }
         }
     }

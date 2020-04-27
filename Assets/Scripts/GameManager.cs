@@ -9,6 +9,10 @@ public class GameManager : MonoBehaviour
     public CharacterStats[] playerStats;
     public bool gameMenuOpen, isDialogActive, inSceneTransition;
 
+    public string[] itemsHeld;
+    public int[] numberOfItems;
+    public Item[] referenceItem;
+
     void Start()
     {
         instance = this;
@@ -25,5 +29,18 @@ public class GameManager : MonoBehaviour
         }
 
         //PlayerController.instance.movementEnabled = !(gameMenuOpen || isDialogActive || inSceneTransition);
+    }
+
+    public Item GetItemDetails(string itemName)
+    {
+
+        for (int i = 0; i < referenceItem.Length; i ++) {
+            print(referenceItem[i].itemName + " " + itemName);
+            if (referenceItem[i].itemName == itemName) {
+                return referenceItem[i];
+            }
+        }
+
+        return null;
     }
 }
