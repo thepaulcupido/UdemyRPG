@@ -31,7 +31,7 @@ public class DialogManager : MonoBehaviour
             dialogText.text = dialogLines[currentLine];
         } else {
             dialogBox.SetActive(false);
-            PlayerController.instance.movementEnabled = true;
+            GameManager.instance.isDialogActive = false;
         }
     }
 
@@ -70,6 +70,6 @@ public class DialogManager : MonoBehaviour
         
         justStarted = true;
         dialogBox.SetActive(true);
-        PlayerController.instance.movementEnabled = false;
+        GameManager.instance.isDialogActive = true;
     }
 }

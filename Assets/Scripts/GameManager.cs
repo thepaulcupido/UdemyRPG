@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance;
     public CharacterStats[] playerStats;
+    public bool gameMenuOpen, isDialogActive, inSceneTransition;
 
     void Start()
     {
@@ -17,6 +18,12 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (gameMenuOpen || isDialogActive || inSceneTransition) {
+            PlayerController.instance.movementEnabled = false;
+        } else {
+            PlayerController.instance.movementEnabled = true;
+        }
+
+        //PlayerController.instance.movementEnabled = !(gameMenuOpen || isDialogActive || inSceneTransition);
     }
 }
