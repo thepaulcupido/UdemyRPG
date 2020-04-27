@@ -5,13 +5,16 @@ using UnityEngine.UI;
 
 public class GameMenu : MonoBehaviour
 {
+    //private variables
     private CharacterStats[] playerStats;
 
+    // public variables
     public GameObject gameMenu;
     public Text[] nameText, hpText, mpText, levelText, expNextLevelText;
     public Slider[] expSlider;
     public Image[] characterImage;
     public GameObject[] characterStatHolder;
+    public GameObject[] windows;
 
     // Start is called before the first frame update
     void Start()
@@ -25,14 +28,35 @@ public class GameMenu : MonoBehaviour
         if (Input.GetButtonDown("Fire2")) {
 
             if (this.gameMenu.active) {
-                gameMenu.SetActive(false);
-                GameManager.instance.gameMenuOpen = false;
+                this.CloseMenu();
+                
             } else {
                 gameMenu.SetActive(true);
                 GameManager.instance.gameMenuOpen = true;
                 this.UpdateMainStats();
             }
         }
+    }
+
+    public void ToggleWindow(int index)
+    {
+        for (int x = 0; x < windows.Length; x++) {
+            if (index == x) {
+                windows[x].SetActive(!windows[x].active);
+            } else {
+                windows[x].SetActive(false);
+            }
+        }
+    }
+
+    public void CloseMenu()
+    {
+        for (int x = 0; x < windows.Length; x++) {
+            windows[x].SetActive(false);
+        }
+
+        gameMenu.SetActive(false);
+        GameManager.instance.gameMenuOpen = false;
     }
 
     public void UpdateMainStats()
