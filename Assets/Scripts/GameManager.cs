@@ -7,6 +7,11 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance;
     public CharacterStats[] playerStats;
+    public bool gameMenuOpen, isDialogActive, inSceneTransition;
+
+    public string[] itemsHeld;
+    public int[] numberOfItems;
+    public Item[] referenceItem;
 
     void Start()
     {
@@ -17,6 +22,48 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (gameMenuOpen || isDialogActive || inSceneTransition) {
+            PlayerController.instance.movementEnabled = false;
+        } else {
+            PlayerController.instance.movementEnabled = true;
+        }
+
+        //PlayerController.instance.movementEnabled = !(gameMenuOpen || isDialogActive || inSceneTransition);
+    }
+
+    public Item GetItemDetails(string itemName)
+    {
+
+        for (int i = 0; i < referenceItem.Length; i ++) {
+            if (referenceItem[i].itemName == itemName) {
+                return referenceItem[i];
+            }
+        }
+
+        return null;
+    }
+
+    public void SortItems()
+    {
+
+        bool itemAfterSpace = true;
+
+        while (itemAfterSpace) {
+            itemAfterSpace = false;
+
+            for (int i = 0; i < itemsHeld.Length -1; i ++) {
+               if (itemsHeld[i] == "") {
+                    itemsHeld[i] = itemsHeld[i+1];
+                    itemsHeld[i+1] = "";
+
+                    numberOfItems[i] = numberOfItems[i+1];
+                    numberOfItems[i+1] = 0;
+
+                    if (itemsHeld[i] != "") {
+                        itemAfterSpace = true;
+                    }
+                }
+            }
+        }
     }
 }

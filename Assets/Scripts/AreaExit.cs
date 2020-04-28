@@ -24,6 +24,7 @@ public class AreaExit : MonoBehaviour
         if (other.tag == "Player") {
             // SceneManager.LoadScene(areaToLoad);
             loadAfterFade = true;
+            GameManager.instance.inSceneTransition = true;
             // need to disable user input while this transition is happening
 
             UIFade.instance.FadeToBlack();
