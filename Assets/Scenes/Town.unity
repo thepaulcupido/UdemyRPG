@@ -16290,6 +16290,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -450.15
       objectReference: {fileID: 0}
+    - target: {fileID: 1445546051687524996, guid: 7179b37a1a2e1438388d8e83d64751b8,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1.4549866
+      objectReference: {fileID: 0}
     - target: {fileID: 3534714888450747346, guid: 7179b37a1a2e1438388d8e83d64751b8,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -16979,6 +16984,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5080695283274827042, guid: 268e8412a707543429e702164262e67c,
+        type: 3}
+      propertyPath: equippedWeapn
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5080695283274827042, guid: 268e8412a707543429e702164262e67c,
+        type: 3}
+      propertyPath: equippedArmour
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5080695284491411853, guid: 268e8412a707543429e702164262e67c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -17038,6 +17053,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5080695285028160986, guid: 268e8412a707543429e702164262e67c,
+        type: 3}
+      propertyPath: equippedWeapn
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5080695285028160986, guid: 268e8412a707543429e702164262e67c,
+        type: 3}
+      propertyPath: equippedArmour
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5080695285131568791, guid: 268e8412a707543429e702164262e67c,
+        type: 3}
+      propertyPath: equippedWeapn
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5080695285131568791, guid: 268e8412a707543429e702164262e67c,
+        type: 3}
+      propertyPath: equippedArmour
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 268e8412a707543429e702164262e67c, type: 3}
