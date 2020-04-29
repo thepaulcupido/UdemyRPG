@@ -19,10 +19,18 @@ public class GameMenu : MonoBehaviour
     public GameObject[] windows;
     public GameObject[] statusButtons;
     public ItemButton[] itemButtons;
+    public string selectedItem;
+    public Item activeItem;
+    public Text itemName, itemDescription, useButtonText;
+    public Text[] itemCharChoiceNames;
+
+    public GameObject itemCharacterChoiceMenu;
+    public static GameMenu instance;
 
     void Start()
     {
         this.UpdateMainStats();
+        instance = this;
     }
 
 
@@ -70,6 +78,7 @@ public class GameMenu : MonoBehaviour
                 windows[x].SetActive(false);
             }
         }
+        this.itemCharacterChoiceMenu.SetActive(false);
     }
 
     public void CloseMenu()
@@ -79,6 +88,7 @@ public class GameMenu : MonoBehaviour
         }
 
         gameMenu.SetActive(false);
+        this.itemCharacterChoiceMenu.SetActive(false);
         GameManager.instance.gameMenuOpen = false;
     }
 
@@ -140,4 +150,50 @@ public class GameMenu : MonoBehaviour
             }
         }
     }
+
+    public void SelectItem(Item selectedItem)
+    {
+        activeItem = selectedItem;
+        
+        if (activeItem.isItem) {
+            useButtonText.text = "Use";
+        } else if (activeItem.isWeapon || activeItem.isArmour) {
+            useButtonText.text = "Equip";
+        }
+
+        itemName.text = activeItem.itemName;
+        itemDescription.text = activeItem.description;
+    }
+
+    public void DiscardItem()
+    {
+        if (activeItem != null) {
+            GameManager.instance.RemoveItem(activeItem.itemName);
+        }
+    }
+
+    public void OpenItemCharacterChoice()
+    {
+        CharacterStats stats;
+        this.itemCharacterChoiceMenu.SetActive(true);
+        for (int i = 0; i < itemCharChoiceNames.Length; i++) {
+            stats = GameManager.instance.playerStats[i];
+
+            itemCharChoiceNames[i].text = stats.characterName;
+            itemCharChoiceNames[i].transform.parent.gameObject.SetActive(stats.gameObject.active);
+        }
+    }
+
+    public void CloseItemCharacterChoice()
+    {
+        this.itemCharacterChoiceMenu.SetActive(false);
+    }
+
+    public void UseItem(int selectChar)
+    {
+        activeItem.Use(selectChar);
+        UpdateMainStats();
+        CloseItemCharacterChoice();
+    }
+
 }

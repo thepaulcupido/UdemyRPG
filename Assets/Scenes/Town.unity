@@ -15915,6 +15915,119 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+--- !u!1001 &1514957858
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7504299092666021813, guid: ac2446c39334047eca6a4e371cd722e7,
+        type: 3}
+      propertyPath: m_Name
+      value: HealthPotion
+      objectReference: {fileID: 0}
+    - target: {fileID: 7504299092666021814, guid: ac2446c39334047eca6a4e371cd722e7,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.822
+      objectReference: {fileID: 0}
+    - target: {fileID: 7504299092666021814, guid: ac2446c39334047eca6a4e371cd722e7,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.299
+      objectReference: {fileID: 0}
+    - target: {fileID: 7504299092666021814, guid: ac2446c39334047eca6a4e371cd722e7,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7504299092666021814, guid: ac2446c39334047eca6a4e371cd722e7,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7504299092666021814, guid: ac2446c39334047eca6a4e371cd722e7,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7504299092666021814, guid: ac2446c39334047eca6a4e371cd722e7,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7504299092666021814, guid: ac2446c39334047eca6a4e371cd722e7,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7504299092666021814, guid: ac2446c39334047eca6a4e371cd722e7,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7504299092666021814, guid: ac2446c39334047eca6a4e371cd722e7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7504299092666021814, guid: ac2446c39334047eca6a4e371cd722e7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7504299092666021814, guid: ac2446c39334047eca6a4e371cd722e7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7504299092666021814, guid: ac2446c39334047eca6a4e371cd722e7,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.344
+      objectReference: {fileID: 0}
+    - target: {fileID: 7504299092666021814, guid: ac2446c39334047eca6a4e371cd722e7,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.258
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ac2446c39334047eca6a4e371cd722e7, type: 3}
+--- !u!1 &1514957859 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7504299092666021813, guid: ac2446c39334047eca6a4e371cd722e7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1514957858}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &1514957860
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514957859}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+--- !u!114 &1514957861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514957859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cebb8a464263f4d668715e8799f9425a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1709868424
 GameObject:
   m_ObjectHideFlags: 0
@@ -16289,6 +16402,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -450.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1445546051687524996, guid: 7179b37a1a2e1438388d8e83d64751b8,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1.4549866
       objectReference: {fileID: 0}
     - target: {fileID: 3534714888450747346, guid: 7179b37a1a2e1438388d8e83d64751b8,
         type: 3}
@@ -16979,6 +17097,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5080695283274827042, guid: 268e8412a707543429e702164262e67c,
+        type: 3}
+      propertyPath: equippedWeapn
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5080695283274827042, guid: 268e8412a707543429e702164262e67c,
+        type: 3}
+      propertyPath: equippedArmour
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5080695284491411853, guid: 268e8412a707543429e702164262e67c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -17038,6 +17166,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5080695285028160986, guid: 268e8412a707543429e702164262e67c,
+        type: 3}
+      propertyPath: equippedWeapn
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5080695285028160986, guid: 268e8412a707543429e702164262e67c,
+        type: 3}
+      propertyPath: equippedArmour
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5080695285131568791, guid: 268e8412a707543429e702164262e67c,
+        type: 3}
+      propertyPath: equippedWeapn
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5080695285131568791, guid: 268e8412a707543429e702164262e67c,
+        type: 3}
+      propertyPath: equippedArmour
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 268e8412a707543429e702164262e67c, type: 3}

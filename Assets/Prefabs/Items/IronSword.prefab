@@ -93,8 +93,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isItem: 0
-  isWeapon: 0
-  isArmour: 1
+  isWeapon: 1
+  isArmour: 0
   itemName: Iron Sword
   description: A sturdy sword made from iron
   value: 25
