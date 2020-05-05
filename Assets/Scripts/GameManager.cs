@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour
     public string[] itemsHeld;
     public int[] numberOfItems;
     public Item[] referenceItem;
+    public bool shopActive;
+
+    public int currentGold = 0; 
 
     void Start()
     {
@@ -24,7 +27,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameMenuOpen || isDialogActive || inSceneTransition) {
+        if (gameMenuOpen || isDialogActive || inSceneTransition || shopActive) {
             PlayerController.instance.movementEnabled = false;
         } else {
             PlayerController.instance.movementEnabled = true;
