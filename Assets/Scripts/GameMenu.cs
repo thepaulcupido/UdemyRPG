@@ -27,6 +27,8 @@ public class GameMenu : MonoBehaviour
     public GameObject itemCharacterChoiceMenu;
     public static GameMenu instance;
 
+    public Text goldText;
+
     void Start()
     {
         this.UpdateMainStats();
@@ -87,7 +89,10 @@ public class GameMenu : MonoBehaviour
             windows[x].SetActive(false);
         }
 
+        Shop.instance.CloseShop();
+        
         gameMenu.SetActive(false);
+        
         this.itemCharacterChoiceMenu.SetActive(false);
         GameManager.instance.gameMenuOpen = false;
     }
@@ -106,27 +111,30 @@ public class GameMenu : MonoBehaviour
 
     public void UpdateMainStats()
     {
-        this.playerStats = GameManager.instance.playerStats;
+        if (GameManager.instance != null) {
+            this.playerStats = GameManager.instance.playerStats;
+            goldText.text = GameManager.instance.currentGold.ToString() + "g";
 
-        for (int index = 0; index < playerStats.Length; index++) {
-            if (playerStats[index].gameObject.active) {
-                characterStatHolder[index].SetActive(true);
+            for (int index = 0; index < playerStats.Length; index++) {
+                if (playerStats[index].gameObject.active) {
+                    characterStatHolder[index].SetActive(true);
 
-                // Update player stats
-                nameText[index].text = playerStats[index].characterName;
-                hpText[index].text = "HP: " + playerStats[index].currentHP + "/" + playerStats[index].maxHP;
-                mpText[index].text = "MP: " + playerStats[index].currentMp + "/" + playerStats[index].maxMP;
-                
-                levelText[index].text = "Level: " + playerStats[index].characterLevel;
-                expNextLevelText[index].text = "" + playerStats[index].currentExp + "/" + playerStats[index].expToNextLevel[playerStats[index].characterLevel];
-                expSlider[index].maxValue = playerStats[index].expToNextLevel[playerStats[index].characterLevel];
-                expSlider[index].value = playerStats[index].currentExp;
+                    // Update player stats
+                    nameText[index].text = playerStats[index].characterName;
+                    hpText[index].text = "HP: " + playerStats[index].currentHP + "/" + playerStats[index].maxHP;
+                    mpText[index].text = "MP: " + playerStats[index].currentMp + "/" + playerStats[index].maxMP;
+                    
+                    levelText[index].text = "Level: " + playerStats[index].characterLevel;
+                    expNextLevelText[index].text = "" + playerStats[index].currentExp + "/" + playerStats[index].expToNextLevel[playerStats[index].characterLevel];
+                    expSlider[index].maxValue = playerStats[index].expToNextLevel[playerStats[index].characterLevel];
+                    expSlider[index].value = playerStats[index].currentExp;
 
-                characterImage[index].sprite = playerStats[index].characterImage;
+                    characterImage[index].sprite = playerStats[index].characterImage;
 
-            } else {
-                characterStatHolder[index].SetActive(false);
-                break;
+                } else {
+                    characterStatHolder[index].SetActive(false);
+                    break;
+                }
             }
         }
     }
@@ -143,7 +151,7 @@ public class GameMenu : MonoBehaviour
             if (GameManager.instance.itemsHeld[i] != "") {
                 itemButtons[i].buttonImage.gameObject.SetActive(true);
                 itemButtons[i].buttonImage.sprite = GameManager.instance.GetItemDetails(GameManager.instance.itemsHeld[i]).itemSprite;
-                itemButtons[i].amountText.text = GameManager.instance.numberOfItems[i].ToString();
+                itemButtons[i].amountText.text = "";
             } else {
                 itemButtons[i].buttonImage.gameObject.SetActive(false);
                 itemButtons[i].amountText.text = "";
