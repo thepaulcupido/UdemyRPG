@@ -23,6 +23,9 @@ public class GameMenu : MonoBehaviour
     public Item activeItem;
     public Text itemName, itemDescription, useButtonText;
     public Text[] itemCharChoiceNames;
+    public GameObject SideButtonMenu;
+    public GameObject CharacterInfoMenu;
+
 
     public GameObject itemCharacterChoiceMenu;
     public static GameMenu instance;
@@ -44,7 +47,9 @@ public class GameMenu : MonoBehaviour
                 this.CloseMenu();
                 
             } else {
-                gameMenu.SetActive(true);
+                
+                this.OpenMenu();
+                
                 GameManager.instance.gameMenuOpen = true;
                 this.UpdateMainStats();
             }
@@ -86,7 +91,9 @@ public class GameMenu : MonoBehaviour
     public void CloseMenu()
     {
         for (int x = 0; x < windows.Length; x++) {
-            windows[x].SetActive(false);
+            if (windows[x].active) {
+                windows[x].SetActive(false);
+            }
         }
 
         Shop.instance.CloseShop();
@@ -95,6 +102,17 @@ public class GameMenu : MonoBehaviour
         
         this.itemCharacterChoiceMenu.SetActive(false);
         GameManager.instance.gameMenuOpen = false;
+    }
+
+    public void OpenMenu()
+    {
+        SideButtonMenu.SetActive(true);
+        CharacterInfoMenu.SetActive(true);
+        
+        gameMenu.SetActive(true);
+        
+        this.itemCharacterChoiceMenu.SetActive(true);
+        GameManager.instance.gameMenuOpen = true;
     }
 
     public void OpenStatus()

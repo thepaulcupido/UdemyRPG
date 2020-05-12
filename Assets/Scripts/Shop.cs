@@ -14,7 +14,7 @@ public class Shop : MonoBehaviour
     public Text goldText;
     public string[] itemsForSale = new string[40];
     public ItemButton[] buyItemButtons;
-    public ItemButton[] SellItemButtons;
+    public ItemButton[] sellItemButtons;
 
     void Start()
     {
@@ -50,6 +50,23 @@ public class Shop : MonoBehaviour
     {
         buyMenu.SetActive(false);
         sellMenu.SetActive(true);
+
+        for (int i = 0; i < sellItemButtons.Length; i++) {
+            sellItemButtons[i].buttonValue = i;
+
+            GameManager.instance.SortItems();
+
+            if (GameManager.instance.itemsHeld[i] != "") {
+                sellItemButtons[i].buttonImage.gameObject.SetActive(true);
+                sellItemButtons[i].buttonImage.sprite = GameManager.instance.GetItemDetails(GameManager.instance.itemsHeld[i]).itemSprite;
+                sellItemButtons[i].amountText.text = "";
+            } else {
+                sellItemButtons[i].buttonImage.gameObject.SetActive(false);
+                sellItemButtons[i].amountText.text = "";
+            }
+        }
+
+
         GameManager.instance.shopActive = true;
     }
 
@@ -66,7 +83,9 @@ public class Shop : MonoBehaviour
         this.buyMenu.SetActive(false);
         this.sellMenu.SetActive(false);
         this.shopMenu.SetActive(false);
+
         GameManager.instance.shopActive = false;
+        // GameMenu.instance.CloseMenu();
     }
 
     // Update is called once per frame
