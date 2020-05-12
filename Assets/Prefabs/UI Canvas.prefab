@@ -40461,6 +40461,13 @@ MonoBehaviour:
   - {fileID: 2630085452583814400}
   - {fileID: 6164115649737651597}
   - {fileID: 3734523107108668341}
+  selectedItem: {fileID: 0}
+  buyItemName: {fileID: 5054164786780450780}
+  buyItemDescription: {fileID: 3382685839273325050}
+  buyItemValue: {fileID: 3359692773469686822}
+  sellItemName: {fileID: 567188582560715845}
+  sellItemDescription: {fileID: 5641412584668242612}
+  sellItemValue: {fileID: 6940561005450673693}
 --- !u!1 &7898634437542096201
 GameObject:
   m_ObjectHideFlags: 0

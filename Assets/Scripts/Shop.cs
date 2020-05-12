@@ -16,6 +16,10 @@ public class Shop : MonoBehaviour
     public ItemButton[] buyItemButtons;
     public ItemButton[] sellItemButtons;
 
+    public Item selectedItem;
+    public Text buyItemName, buyItemDescription, buyItemValue;
+    public Text sellItemName, sellItemDescription, sellItemValue;
+
     void Start()
     {
         instance = this;       
@@ -94,5 +98,23 @@ public class Shop : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.K) && !shopMenu.active) {
             OpenShop();
         }
+    }
+
+    public void SelectBuyItem(Item buyItem)
+    {
+        selectedItem = buyItem;
+    
+        buyItemName.text = selectedItem.itemName;
+        buyItemDescription.text = selectedItem.description;
+        buyItemValue.text = "Value: " + selectedItem.value + "g";
+    }
+
+    public void SelectSellItem(Item sellItem)
+    {
+        selectedItem = sellItem;
+    
+        sellItemName.text = selectedItem.itemName;
+        sellItemDescription.text = selectedItem.description;
+        sellItemValue.text = "Value: " + Mathf.FloorToInt(selectedItem.value * 0.5f) + "g";
     }
 }
