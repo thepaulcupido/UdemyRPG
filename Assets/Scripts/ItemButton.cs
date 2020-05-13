@@ -36,12 +36,16 @@ public class ItemButton : MonoBehaviour
         
         if (Shop.instance.shopMenu.active) {
             if (Shop.instance.buyMenu.active) {
+                itemName = Shop.instance.itemsForSale[buttonValue];
+
                 if (itemName != "") {
                     item = GameManager.instance.GetItemDetails(itemName);
                     Shop.instance.SelectBuyItem(item);
                 }
                 
-            } else if (Shop.instance.sellMenu.active) {
+            }  
+            if (Shop.instance.sellMenu.active) {
+                
                 if (itemName != "") {
                     item = GameManager.instance.GetItemDetails(itemName);
                     Shop.instance.SelectSellItem(item);
