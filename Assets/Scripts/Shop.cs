@@ -14,7 +14,11 @@ public class Shop : MonoBehaviour
     public Text goldText;
     public string[] itemsForSale = new string[40];
     public ItemButton[] buyItemButtons;
-    public ItemButton[] SellItemButtons;
+    public ItemButton[] sellItemButtons;
+
+    public Item selectedItem;
+    public Text buyItemName, buyItemDescription, buyItemValue;
+    public Text sellItemName, sellItemDescription, sellItemValue;
 
     void Start()
     {
@@ -50,6 +54,23 @@ public class Shop : MonoBehaviour
     {
         buyMenu.SetActive(false);
         sellMenu.SetActive(true);
+
+        for (int i = 0; i < sellItemButtons.Length; i++) {
+            sellItemButtons[i].buttonValue = i;
+
+            GameManager.instance.SortItems();
+
+            if (GameManager.instance.itemsHeld[i] != "") {
+                sellItemButtons[i].buttonImage.gameObject.SetActive(true);
+                sellItemButtons[i].buttonImage.sprite = GameManager.instance.GetItemDetails(GameManager.instance.itemsHeld[i]).itemSprite;
+                sellItemButtons[i].amountText.text = "";
+            } else {
+                sellItemButtons[i].buttonImage.gameObject.SetActive(false);
+                sellItemButtons[i].amountText.text = "";
+            }
+        }
+
+
         GameManager.instance.shopActive = true;
     }
 
@@ -66,7 +87,9 @@ public class Shop : MonoBehaviour
         this.buyMenu.SetActive(false);
         this.sellMenu.SetActive(false);
         this.shopMenu.SetActive(false);
+
         GameManager.instance.shopActive = false;
+        // GameMenu.instance.CloseMenu();
     }
 
     // Update is called once per frame
@@ -75,5 +98,23 @@ public class Shop : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.K) && !shopMenu.active) {
             OpenShop();
         }
+    }
+
+    public void SelectBuyItem(Item buyItem)
+    {
+        selectedItem = buyItem;
+    
+        buyItemName.text = selectedItem.itemName;
+        buyItemDescription.text = selectedItem.description;
+        buyItemValue.text = "Value: " + selectedItem.value + "g";
+    }
+
+    public void SelectSellItem(Item sellItem)
+    {
+        selectedItem = sellItem;
+    
+        sellItemName.text = selectedItem.itemName;
+        sellItemDescription.text = selectedItem.description;
+        sellItemValue.text = "Value: " + Mathf.FloorToInt(selectedItem.value * 0.5f) + "g";
     }
 }
