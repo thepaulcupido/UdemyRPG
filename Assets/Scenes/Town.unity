@@ -143,7 +143,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectToActivate: {fileID: 1409176891}
   questName: Quest test
+<<<<<<< HEAD
   activeIfComplete: 1
+=======
+  activeIfComplete: 0
+>>>>>>> 172c495... Added QestMarker script - Added the ability to activate/deactive quests after dialogue
 --- !u!4 &45510731
 Transform:
   m_ObjectHideFlags: 0
@@ -11776,6 +11780,10 @@ GameObject:
   m_Component:
   - component: {fileID: 506823997}
   - component: {fileID: 506823998}
+<<<<<<< HEAD
+=======
+  - component: {fileID: 506823999}
+>>>>>>> 172c495... Added QestMarker script - Added the ability to activate/deactive quests after dialogue
   m_Layer: 0
   m_Name: objects_Padded_0
   m_TagString: Untagged
@@ -11845,6 +11853,35 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+<<<<<<< HEAD
+=======
+--- !u!61 &506823999
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506823996}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+>>>>>>> 172c495... Added QestMarker script - Added the ability to activate/deactive quests after dialogue
 --- !u!1 &535600666
 GameObject:
   m_ObjectHideFlags: 0
@@ -11862,7 +11899,11 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
+<<<<<<< HEAD
   m_IsActive: 1
+=======
+  m_IsActive: 0
+>>>>>>> 172c495... Added QestMarker script - Added the ability to activate/deactive quests after dialogue
 --- !u!114 &535600667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11875,10 +11916,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bf52819d0d324a33bea7430579708b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   questName: 
   isComplete: 0
   markOnEnter: 0
   deactiveOnMarking: 0
+=======
+  questName: Quest test
+  isComplete: 1
+  markOnEnter: 0
+  deactiveOnMarking: 1
+>>>>>>> 172c495... Added QestMarker script - Added the ability to activate/deactive quests after dialogue
 --- !u!61 &535600668
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11935,7 +11983,11 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
+<<<<<<< HEAD
   m_IsActive: 1
+=======
+  m_IsActive: 0
+>>>>>>> 172c495... Added QestMarker script - Added the ability to activate/deactive quests after dialogue
 --- !u!114 &699302840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11950,7 +12002,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectToActivate: {fileID: 506823996}
   questName: Quest test
+<<<<<<< HEAD
   activeIfComplete: 0
+=======
+  activeIfComplete: 1
+>>>>>>> 172c495... Added QestMarker script - Added the ability to activate/deactive quests after dialogue
 --- !u!4 &699302841
 Transform:
   m_ObjectHideFlags: 0
@@ -12203,6 +12259,9 @@ MonoBehaviour:
   isPerson: 0
   lines:
   - Welcome to Town
+  shouldActivateQuest: 0
+  questToMark: 
+  markComplete: 0
 --- !u!61 &1330198140
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16172,6 +16231,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1409176893}
   - component: {fileID: 1409176892}
+<<<<<<< HEAD
+=======
+  - component: {fileID: 1409176894}
+>>>>>>> 172c495... Added QestMarker script - Added the ability to activate/deactive quests after dialogue
   m_Layer: 0
   m_Name: objects_Padded_0
   m_TagString: Untagged
@@ -16241,6 +16304,35 @@ Transform:
   m_Father: {fileID: 45510731}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
+=======
+--- !u!61 &1409176894
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1409176891}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+>>>>>>> 172c495... Added QestMarker script - Added the ability to activate/deactive quests after dialogue
 --- !u!1001 &1514957858
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16642,6 +16734,9 @@ MonoBehaviour:
   - n-Player
   - Don't worry
   - I'll save them!
+  shouldActivateQuest: 1
+  questToMark: Quest test
+  markComplete: 1
 --- !u!1001 &3745667574586480435
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17492,6 +17587,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5080695284491411855, guid: 268e8412a707543429e702164262e67c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5080695285028160986, guid: 268e8412a707543429e702164262e67c,
         type: 3}
