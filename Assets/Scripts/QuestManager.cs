@@ -24,6 +24,15 @@ public class QuestManager : MonoBehaviour
         if (questMarkerComplete == null) {
             questMarkerComplete = new bool[questMarkerNames.Length];
         }
+
+        if (Input.GetKeyUp(KeyCode.Q)) {
+
+            if (IsQuestComplete("Quest test")) {
+                SetQuestCompletion("Quest test", false);
+            } else {
+                SetQuestCompletion("Quest test", true);
+            }
+        }
     }
 
     public int GetQuestIndex(string questName)
@@ -54,12 +63,14 @@ public class QuestManager : MonoBehaviour
 
     // These two methods could easily be merged into a single SetQuestCompletion(string questName, bool isComplete)
 
-    private void SetQuestCompletion(string questName, bool isComplete)
+    public void SetQuestCompletion(string questName, bool isComplete)
     {
         int questIndex = GetQuestIndex(questName);
 
-        if (questIndex > 0) {
+        if (questIndex >= 0) {
             questMarkerComplete[questIndex] = isComplete;
+
+            UpdateLocalQuestObjects();
         }
     }
 
@@ -71,5 +82,15 @@ public class QuestManager : MonoBehaviour
     public void SetQuestActive(string questName)
     {
         SetQuestCompletion(questName, false);
+    }
+
+    public void UpdateLocalQuestObjects()
+    {
+        // Get all QuestObjectActivators
+        QuestObjectActivator[] questObjects = FindObjectsOfType<QuestObjectActivator>();
+
+        for (int i =0 ; i < questObjects.Length; i++) {
+            questObjects[i].CheckCompletion();
+        }
     }
 }
