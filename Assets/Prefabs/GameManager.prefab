@@ -71,6 +71,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5080695284491411853}
   - component: {fileID: 5080695284491411854}
+  - component: {fileID: 8249725891330965350}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -163,6 +164,27 @@ MonoBehaviour:
   - {fileID: 4931514383923834829, guid: cb4e34025692e45ba9a7880f442cb94b, type: 3}
   - {fileID: 5983817728303361939, guid: 4eae3f649f99d4e2b9ea5da32364da7e, type: 3}
   - {fileID: 8665379787534591019, guid: 454954c829e06487bbdf1689d7284945, type: 3}
+  shopActive: 0
+  currentGold: 0
+--- !u!114 &8249725891330965350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5080695284491411855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba7ec7579be074f658082c40bf194f98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questMarkerNames:
+  - Quest test
+  - Fight the demon
+  - Enter the cave
+  - Prove your worth
+  - Defeat the demon lord
+  questMarkerComplete: 
 --- !u!1 &5080695285028160987
 GameObject:
   m_ObjectHideFlags: 0
