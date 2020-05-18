@@ -15,23 +15,13 @@ public class DialogManager : MonoBehaviour
 
     public int currentLine;
 
-    public static DialogManager instance;
-
     private bool justStarted = false;
-    private string questToMark;
-    private bool markQuestComplete;
-    private bool shouldMarkQuest;
+
+    public static DialogManager instance;
 
     void Start()
     {
         instance = this;
-    }
-
-    public void ShouldActivateQuestAtEnd(string questName, bool markComplete)
-    {
-        questToMark = questName;
-        shouldMarkQuest = true;
-        markQuestComplete = markComplete;
     }
 
     void NextLine() {
@@ -40,14 +30,8 @@ public class DialogManager : MonoBehaviour
             CheckIfName();
             dialogText.text = dialogLines[currentLine];
         } else {
-
             dialogBox.SetActive(false);
             GameManager.instance.isDialogActive = false;
-
-            if (shouldMarkQuest) {
-                shouldMarkQuest = false;
-                QuestManager.instance.SetQuestCompletion(questToMark, markQuestComplete);
-            }
         }
     }
 
