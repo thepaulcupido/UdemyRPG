@@ -103,7 +103,7 @@ public class GameMenu : MonoBehaviour
         this.itemCharacterChoiceMenu.SetActive(false);
         GameManager.instance.gameMenuOpen = false;
 
-        AudioManager.instance.PlaySFX(5);
+        // AudioManager.instance.PlaySFX(5);
     }
 
     public void OpenMenu()

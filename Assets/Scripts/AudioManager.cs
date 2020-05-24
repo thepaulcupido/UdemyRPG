@@ -20,15 +20,15 @@ public class AudioManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T)) {
-            PlaySFX(0);
-        }
+        // if (Input.GetKeyDown(KeyCode.T)) {
+        //     PlaySFX(0);
+        // }
     }
 
     public void PlaySFX(int sound)
     {
         if (sound < sfx.Length) {
-            sfx[sound].Play();
+            // sfx[sound].Play();
         }
     }
 

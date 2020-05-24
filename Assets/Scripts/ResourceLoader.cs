@@ -8,6 +8,7 @@ public class ResourceLoader : MonoBehaviour
     public GameObject UIScreen;
     public GameObject Player;
     public GameObject gameManager;
+    public GameObject audioManager;
 
     // Start is called before the first frame update
     void Awake()
@@ -19,6 +20,9 @@ public class ResourceLoader : MonoBehaviour
 
         if (UIFade.instance == null) {
             UIFade.instance = Instantiate(UIScreen).GetComponent<UIFade>();
+        }
+        if (AudioManager.instance == null) {
+            AudioManager.instance = Instantiate(audioManager).GetComponent<AudioManager>();
         }
 
         if (GameManager.instance == null) {
