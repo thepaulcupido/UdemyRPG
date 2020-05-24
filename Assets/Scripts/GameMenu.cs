@@ -25,8 +25,6 @@ public class GameMenu : MonoBehaviour
     public Text[] itemCharChoiceNames;
     public GameObject SideButtonMenu;
     public GameObject CharacterInfoMenu;
-
-
     public GameObject itemCharacterChoiceMenu;
     public static GameMenu instance;
 
@@ -103,7 +101,7 @@ public class GameMenu : MonoBehaviour
         this.itemCharacterChoiceMenu.SetActive(false);
         GameManager.instance.gameMenuOpen = false;
 
-        // AudioManager.instance.PlaySFX(5);
+        AudioManager.instance.PlaySFX(5);
     }
 
     public void OpenMenu()
@@ -204,6 +202,7 @@ public class GameMenu : MonoBehaviour
     {
         CharacterStats stats;
         this.itemCharacterChoiceMenu.SetActive(true);
+
         for (int i = 0; i < itemCharChoiceNames.Length; i++) {
             stats = GameManager.instance.playerStats[i];
 
@@ -232,7 +231,7 @@ public class GameMenu : MonoBehaviour
 
     public void PlayButtonSound()
     {
-        // really want to change this to be something more readable
+        // todo: replace integers with values from a Config file or a enumerated variables
         AudioManager.instance.PlaySFX(4);
     }
 

@@ -9,10 +9,6 @@ public class CameraController : MonoBehaviour
     public Tilemap map;
     public Transform target;
 
-    // Audio variables
-    public int musicToPlay;
-    private bool musicStarted;
-
     // Private variables
     private Vector3 topRightLimit;
     private Vector3 bottomLeftLimit;
@@ -45,10 +41,5 @@ public class CameraController : MonoBehaviour
         var boundsX = Mathf.Clamp(transform.position.x, bottomLeftLimit.x, topRightLimit.x); 
         var boundsY = Mathf.Clamp(transform.position.y, bottomLeftLimit.y, topRightLimit.y);
         transform.position = new Vector3(boundsX, boundsY, transform.position.z);
-
-        if (!musicStarted) {
-            musicStarted = true;
-            AudioManager.instance.PlayBackgroundMusic(musicToPlay);
-        }
     }
 }
