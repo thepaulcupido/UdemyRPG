@@ -5,7 +5,6 @@ using UnityEngine.Tilemaps;
 
 public class CameraController : MonoBehaviour
 {
-
     // Public variables
     public Tilemap map;
     public Transform target;
@@ -13,7 +12,6 @@ public class CameraController : MonoBehaviour
     // Private variables
     private Vector3 topRightLimit;
     private Vector3 bottomLeftLimit;
-
     private float halfWidth;
     private float halfHeight;
 

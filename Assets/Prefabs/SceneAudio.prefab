@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1918674746073479989
+--- !u!1 &561467338432895377
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,45 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 228480989340899385}
-  - component: {fileID: 114357198154765140}
+  - component: {fileID: 561467338432895379}
+  - component: {fileID: 561467338432895378}
   m_Layer: 0
-  m_Name: ResourceLoader
+  m_Name: SceneAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &228480989340899385
+--- !u!4 &561467338432895379
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1918674746073479989}
+  m_GameObject: {fileID: 561467338432895377}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.252957, y: 0.79284644, z: 2.3286228}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114357198154765140
+--- !u!114 &561467338432895378
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1918674746073479989}
+  m_GameObject: {fileID: 561467338432895377}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec2a5b850027c498cbdd371e886cf7e9, type: 3}
+  m_Script: {fileID: 11500000, guid: 22c6ad5aa2f9e4ceea2c2085ce0bd150, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UIScreen: {fileID: 7891900007377197832, guid: 7179b37a1a2e1438388d8e83d64751b8,
-    type: 3}
-  Player: {fileID: 4849286210807670317, guid: 74cf319e0ad41477d96d0670a171d549, type: 3}
-  gameManager: {fileID: 5080695284491411855, guid: 268e8412a707543429e702164262e67c,
-    type: 3}
-  audioManager: {fileID: 3313367528309585421, guid: be0bfc9923a9748d29eea3b0f2cb0132,
-    type: 3}
+  musicToPlay: 2
