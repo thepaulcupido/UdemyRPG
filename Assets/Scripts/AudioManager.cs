@@ -34,9 +34,15 @@ public class AudioManager : MonoBehaviour
 
     public void PlayBackgroundMusic(int music)
     {
-        StopMusic();
-        if (music < bgMusic.Length) {
-            bgMusic[music].Play();
+        if (music < bgMusic.Length || music < 0) {
+            if (!bgMusic[music].isPlaying) {
+                StopMusic();
+                bgMusic[music].Play();
+            } else {
+                print("Music continues between scenes");
+            }
+        } else {
+            Debug.Log("Error: int variable supplied lies out of soundtrack index");
         }
     }
 

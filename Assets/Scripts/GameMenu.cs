@@ -102,6 +102,8 @@ public class GameMenu : MonoBehaviour
         
         this.itemCharacterChoiceMenu.SetActive(false);
         GameManager.instance.gameMenuOpen = false;
+
+        AudioManager.instance.PlaySFX(5);
     }
 
     public void OpenMenu()
@@ -226,6 +228,12 @@ public class GameMenu : MonoBehaviour
     {
         GameManager.instance.SaveData();
         QuestManager.instance.SaveQuestData();
+    }
+
+    public void PlayButtonSound()
+    {
+        // really want to change this to be something more readable
+        AudioManager.instance.PlaySFX(4);
     }
 
 }

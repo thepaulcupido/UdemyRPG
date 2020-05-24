@@ -1104,6 +1104,11 @@ PrefabInstance:
       propertyPath: map
       value: 
       objectReference: {fileID: 658499390}
+    - target: {fileID: 1962991234223763471, guid: 7a95950034fb240f2a5ac647821a7e06,
+        type: 3}
+      propertyPath: musicToPlay
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1962991234223763697, guid: 7a95950034fb240f2a5ac647821a7e06,
         type: 3}
       propertyPath: m_LocalPosition.x
