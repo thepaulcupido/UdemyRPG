@@ -7,12 +7,13 @@ public class MainMenu : MonoBehaviour
 {
 
     public string newGameScene;
+    public string loadGameScene;
     public GameObject continueButton;
 
     // Start is called before the first frame update
     void Start()
     {
-        bool hasKey = PlayerPrefs.HasKey("X");
+        bool hasKey = PlayerPrefs.HasKey("Current_Scene");
         continueButton.SetActive(hasKey);
     }
 
@@ -24,7 +25,7 @@ public class MainMenu : MonoBehaviour
 
     public void Continue()
     {
-        
+        SceneManager.LoadScene(loadGameScene);
     }
 
     public void NewGame()
