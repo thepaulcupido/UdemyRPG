@@ -35,11 +35,14 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        transform.position = new Vector3(target.position.x, target.position.y,transform.position.z);
+        if (target != null) {
+            transform.position = new Vector3(target.position.x, target.position.y,transform.position.z);
 
-        // Keep the camera inside the bounds
-        var boundsX = Mathf.Clamp(transform.position.x, bottomLeftLimit.x, topRightLimit.x); 
-        var boundsY = Mathf.Clamp(transform.position.y, bottomLeftLimit.y, topRightLimit.y);
-        transform.position = new Vector3(boundsX, boundsY, transform.position.z);
+            // Keep the camera inside the bounds
+            var boundsX = Mathf.Clamp(transform.position.x, bottomLeftLimit.x, topRightLimit.x); 
+            var boundsY = Mathf.Clamp(transform.position.y, bottomLeftLimit.y, topRightLimit.y);
+            transform.position = new Vector3(boundsX, boundsY, transform.position.z);
+        }
+        
     }
 }
