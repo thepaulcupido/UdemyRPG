@@ -16,7 +16,6 @@ public class PlayerController : MonoBehaviour {
 	private Vector3 topRightLimit;
 	private Vector3 bottomLeftLimit;
 
-	// Use this for initialization
 	void Start () {
 		if (instance == null) {
 			instance = this;
