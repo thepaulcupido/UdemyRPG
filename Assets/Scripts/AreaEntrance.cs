@@ -7,7 +7,7 @@ public class AreaEntrance : MonoBehaviour
 
     public string transitionName;
 
-    // Start is called before the first frame update
+    // todo: use a combination of enums and a config file to replace the transition names
     void Start()
     {
         if (this.transitionName == PlayerController.instance.areaTransitionName) {
