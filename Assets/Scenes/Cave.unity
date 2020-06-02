@@ -20951,6 +20951,9 @@ MonoBehaviour:
   - {fileID: 2585392920487777975, guid: 4c1c2d417a81948ba833ef16b528adef, type: 3}
   - {fileID: 2585392920487777975, guid: 4c1c2d417a81948ba833ef16b528adef, type: 3}
   activeBattlers: []
+  currentTurn: 0
+  isTurnWaiting: 1
+  UIButtonMenuHolder: {fileID: 1602649711}
 --- !u!4 &2127811455
 Transform:
   m_ObjectHideFlags: 0

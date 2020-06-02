@@ -102,7 +102,7 @@ public class BattleManager : MonoBehaviour
 
     public void NextTurn()
     {
-        currentTurn = (currentTurn >= activeBattlers.Count) ? currentTurn++ : activeBattlers.Count;
+        currentTurn = (currentTurn >= activeBattlers.Count) ? currentTurn+1 : activeBattlers.Count-1;
         isTurnWaiting = true;
         UpdateBattle();
     }
@@ -113,7 +113,7 @@ public class BattleManager : MonoBehaviour
         bool allPlayersDead = true;
 
         for (int x = 0; x < activeBattlers.Count; x++) {
-            if (activeBattlers[x].isAlive || activeBattlers[x].currentHp > 0) {
+            if (activeBattlers[x].isAlive && activeBattlers[x].currentHp > 0) {
                 if (activeBattlers[x].isPlayer) {
                     allPlayersDead = false;
                 } else {
@@ -121,10 +121,11 @@ public class BattleManager : MonoBehaviour
                 }
             } else {
                 activeBattlers[x].currentHp = 0;
+                activeBattlers[x].isAlive = false;
             }
         }
 
-        if (!allEnemiesDead || !allPlayersDead) {
+        if (!allEnemiesDead && !allPlayersDead) {
             return;
         }
 
@@ -137,9 +138,19 @@ public class BattleManager : MonoBehaviour
         EndBattle();
     }
 
-    private void EndBattle() {
-        battleScene.active = false;
+    //todo: destroy all battlers and remove superfluous game objects
+    private void EndBattle()
+    {
+                
+        // for (int x = 0; x < activeBattlers.Count; x++) {
+        //     Destroy(GameObject.Find("Player1(Clone)"));
+        // }
+
+        // activeBattlers.Clear();
+
+        battleScene.SetActive(false);
         GameManager.instance.isBattleActive = false;
         isBattleActive = false;
     }
+
 }
