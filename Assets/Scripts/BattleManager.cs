@@ -37,8 +37,10 @@ public class BattleManager : MonoBehaviour
         if (isBattleActive) {
             if (isTurnWaiting) {
                 UIButtonMenuHolder.SetActive(activeBattlers[currentTurn].isPlayer);
+                if (!activeBattlers[currentTurn].isPlayer) {
+                    StartCoroutine(EnemyMoveCoroutine());
+                }
             }
-            // 
         }
 
         if (Input.GetKeyDown(KeyCode.M)) {
@@ -102,7 +104,7 @@ public class BattleManager : MonoBehaviour
 
     public void NextTurn()
     {
-        currentTurn = (currentTurn >= activeBattlers.Count) ? currentTurn+1 : activeBattlers.Count-1;
+        currentTurn = (currentTurn >= activeBattlers.Count - 1) ? 0 : currentTurn+1;
         isTurnWaiting = true;
         UpdateBattle();
     }
@@ -135,6 +137,7 @@ public class BattleManager : MonoBehaviour
             // game over - party was defeated
         }
 
+
         EndBattle();
     }
 
@@ -153,4 +156,29 @@ public class BattleManager : MonoBehaviour
         isBattleActive = false;
     }
 
+    public IEnumerator EnemyMoveCoroutine()
+    {
+        // Co-routine - works on a different thread to the main program
+        isTurnWaiting = false;
+
+        yield return new WaitForSeconds(1f);
+        EnemyAttack();
+
+        yield return new WaitForSeconds(1f);
+        NextTurn();
+    }
+
+    public void EnemyAttack()
+    {
+        List<int> players = new List<int>();
+        for (int i  =0; i < activeBattlers.Count; i ++) {
+            if (activeBattlers[i].isPlayer && activeBattlers[i].currentHp > 0) {
+                players.Add(i);
+            }
+        }
+
+        // Enemy AI logic here
+        int selectedTarget = players[Random.Range(0, players.Count)];
+        activeBattlers[selectedTarget].currentHp -= 25;
+    }
 }
