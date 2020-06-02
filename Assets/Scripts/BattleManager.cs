@@ -13,6 +13,10 @@ public class BattleManager : MonoBehaviour
     public BattleCharacter[] enemyPrefabs;
     public List<BattleCharacter> activeBattlers = new List<BattleCharacter>();
 
+    public int currentTurn = 0; // why is this public?
+    public bool isTurnWaiting = true;
+    public GameObject UIButtonMenuHolder;
+
     // private variables
     private bool isBattleActive;
 
@@ -28,6 +32,17 @@ public class BattleManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.N)) {
             string[] enemies = {"Skeleton", "Eyeball"};
             BattleStart(enemies);
+        }
+
+        if (isBattleActive) {
+            if (isTurnWaiting) {
+                UIButtonMenuHolder.SetActive(activeBattlers[currentTurn].isPlayer);
+            }
+            // 
+        }
+
+        if (Input.GetKeyDown(KeyCode.M)) {
+            NextTurn();
         }
     }
 
@@ -71,7 +86,7 @@ public class BattleManager : MonoBehaviour
 
             for (int i = 0; i < enemiesToSpawn.Length; i++) {
                 if (enemiesToSpawn[i] != "") {
-                    
+
                     for (int j = 0; j < enemyPrefabs.Length; j++) {
                         if (enemyPrefabs[j].characterName == enemiesToSpawn[i]) {
                             BattleCharacter newEnemy = Instantiate(enemyPrefabs[j], enemyPositions[i].position, enemyPositions[i].rotation);
@@ -83,5 +98,48 @@ public class BattleManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void NextTurn()
+    {
+        currentTurn = (currentTurn >= activeBattlers.Count) ? currentTurn++ : activeBattlers.Count;
+        isTurnWaiting = true;
+        UpdateBattle();
+    }
+
+    public void UpdateBattle()
+    {
+        bool allEnemiesDead = true;
+        bool allPlayersDead = true;
+
+        for (int x = 0; x < activeBattlers.Count; x++) {
+            if (activeBattlers[x].isAlive || activeBattlers[x].currentHp > 0) {
+                if (activeBattlers[x].isPlayer) {
+                    allPlayersDead = false;
+                } else {
+                    allEnemiesDead = false;
+                }
+            } else {
+                activeBattlers[x].currentHp = 0;
+            }
+        }
+
+        if (!allEnemiesDead || !allPlayersDead) {
+            return;
+        }
+
+        if (allEnemiesDead) {
+            // battle ends in victory
+        } else {
+            // game over - party was defeated
+        }
+
+        EndBattle();
+    }
+
+    private void EndBattle() {
+        battleScene.active = false;
+        GameManager.instance.isBattleActive = false;
+        isBattleActive = false;
     }
 }

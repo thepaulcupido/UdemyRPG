@@ -20936,13 +20936,19 @@ MonoBehaviour:
   - {fileID: 450882267}
   - {fileID: 529807475}
   - {fileID: 1738065}
-  enemyPositions: []
+  enemyPositions:
+  - {fileID: 80997690}
+  - {fileID: 1837282634}
+  - {fileID: 1913976156}
+  - {fileID: 2140540765}
+  - {fileID: 405485644}
   playerPrefabs:
   - {fileID: 4132090276966712165, guid: 1527d60e64aeb4c078620051eac5efa6, type: 3}
   - {fileID: 1142869608007221460, guid: f70dcef6a26bb4e16bcf949edf4353b6, type: 3}
   enemyPrefabs:
   - {fileID: 6947025451436386440, guid: 7394652eb0f1b4baebfb703ed2ad9c70, type: 3}
   - {fileID: 8483840260181870877, guid: 913bf7fde6d9d4f60b1ee539c6c0cab5, type: 3}
+  - {fileID: 2585392920487777975, guid: 4c1c2d417a81948ba833ef16b528adef, type: 3}
   - {fileID: 2585392920487777975, guid: 4c1c2d417a81948ba833ef16b528adef, type: 3}
   activeBattlers: []
 --- !u!4 &2127811455
