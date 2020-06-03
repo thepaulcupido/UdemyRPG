@@ -18,6 +18,9 @@ public class BattleManager : MonoBehaviour
     public GameObject UIButtonMenuHolder;
 
     public BattleMove[] movesList;
+
+    public GameObject enmeyAttackEffect;
+
     // private variables
     private bool isBattleActive;
 
@@ -190,6 +193,8 @@ public class BattleManager : MonoBehaviour
             }
         }
 
+        Instantiate(enmeyAttackEffect, activeBattlers[currentTurn].transform.position, activeBattlers[currentTurn].transform.rotation);
+
         DealDamage(selectedTarget, movePower);
     }
 
@@ -202,4 +207,6 @@ public class BattleManager : MonoBehaviour
         activeBattlers[target].currentHp -= Mathf.RoundToInt(damageCalculation);
         Debug.Log(activeBattlers[currentTurn].characterName + " is dealing " + Mathf.RoundToInt(damageCalculation) + " damage");
     }
+
+
 }
