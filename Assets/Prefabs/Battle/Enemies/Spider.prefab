@@ -103,4 +103,6 @@ MonoBehaviour:
   defence: 5
   weaponPower: 5
   armourPower: 5
-  availableMoves: []
+  availableMoves:
+  - Slash
+  - Plasma
