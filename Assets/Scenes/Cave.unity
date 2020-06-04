@@ -20954,6 +20954,29 @@ MonoBehaviour:
   currentTurn: 0
   isTurnWaiting: 1
   UIButtonMenuHolder: {fileID: 1602649711}
+  movesList:
+  - moveName: Slash
+    movePower: 40
+    moveCost: 0
+    effect: {fileID: 1955604505448251950, guid: 54d8640b783254214a4ce48263f28681,
+      type: 3}
+  - moveName: Fire
+    movePower: 50
+    moveCost: 5
+    effect: {fileID: 2132370763826627191, guid: fea32ddfac01b4b8a8c5308d1fa0bcae,
+      type: 3}
+  - moveName: Plasma
+    movePower: 85
+    moveCost: 10
+    effect: {fileID: 7185149288465153118, guid: 94b4b1a6fd0004af1abeb6eecfb4d293,
+      type: 3}
+  - moveName: Ice
+    movePower: 65
+    moveCost: 5
+    effect: {fileID: 2317067152651302491, guid: 02fc5656870bf44f3ba5d5e7283f407f,
+      type: 3}
+  enmeyAttackEffect: {fileID: 2057744005324524065, guid: e9e28c450fa5b44308170f1af507aec3,
+    type: 3}
 --- !u!4 &2127811455
 Transform:
   m_ObjectHideFlags: 0

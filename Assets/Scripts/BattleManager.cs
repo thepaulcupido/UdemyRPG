@@ -17,6 +17,10 @@ public class BattleManager : MonoBehaviour
     public bool isTurnWaiting = true;
     public GameObject UIButtonMenuHolder;
 
+    public BattleMove[] movesList;
+
+    public GameObject enmeyAttackEffect;
+
     // private variables
     private bool isBattleActive;
 
@@ -179,6 +183,30 @@ public class BattleManager : MonoBehaviour
 
         // Enemy AI logic here
         int selectedTarget = players[Random.Range(0, players.Count)];
-        activeBattlers[selectedTarget].currentHp -= 25;
+        int movePower = 0;
+
+        int selectAttack = Random.Range(0, activeBattlers[currentTurn].availableMoves.Length-1);
+        for (int i = 0; i < movesList.Length; i++) {
+            if (movesList[i].moveName == activeBattlers[currentTurn].availableMoves[selectAttack]) {
+                movePower = movesList[i].movePower;
+                Instantiate(movesList[i].effect, activeBattlers[selectedTarget].transform.position, activeBattlers[selectedTarget].transform.rotation);
+            }
+        }
+
+        Instantiate(enmeyAttackEffect, activeBattlers[currentTurn].transform.position, activeBattlers[currentTurn].transform.rotation);
+
+        DealDamage(selectedTarget, movePower);
     }
+
+    public void DealDamage(int target, int movePower)
+    {
+        float attackPower = activeBattlers[currentTurn].strength + activeBattlers[currentTurn].weaponPower;
+        float defencePower = activeBattlers[target].defence + activeBattlers[target].armourPower;
+
+        float damageCalculation = (attackPower / defencePower) * movePower * Random.Range(0.9f, 1.1f);
+        activeBattlers[target].currentHp -= Mathf.RoundToInt(damageCalculation);
+        Debug.Log(activeBattlers[currentTurn].characterName + " is dealing " + Mathf.RoundToInt(damageCalculation) + " damage");
+    }
+
+
 }
