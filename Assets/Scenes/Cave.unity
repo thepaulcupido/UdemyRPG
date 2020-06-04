@@ -20977,6 +20977,8 @@ MonoBehaviour:
       type: 3}
   enmeyAttackEffect: {fileID: 2057744005324524065, guid: e9e28c450fa5b44308170f1af507aec3,
     type: 3}
+  damageNumber: {fileID: 3160337867640359345, guid: cc64766ba1d6e4164ad157e0a14e4f3e,
+    type: 3}
 --- !u!4 &2127811455
 Transform:
   m_ObjectHideFlags: 0
