@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BattleManager : MonoBehaviour
 {
@@ -20,6 +21,10 @@ public class BattleManager : MonoBehaviour
     public BattleMove[] movesList;
 
     public GameObject enmeyAttackEffect;
+
+    public DamageCalculations damageNumber;
+
+    public Text[] playerName, playerHp, playerMp;
 
     // private variables
     private bool isBattleActive;
@@ -103,6 +108,8 @@ public class BattleManager : MonoBehaviour
                     }
                 }
             }
+
+            UpdateUIStats();
         }
     }
 
@@ -111,6 +118,7 @@ public class BattleManager : MonoBehaviour
         currentTurn = (currentTurn >= activeBattlers.Count - 1) ? 0 : currentTurn+1;
         isTurnWaiting = true;
         UpdateBattle();
+        UpdateUIStats();
     }
 
     public void UpdateBattle()
@@ -132,6 +140,16 @@ public class BattleManager : MonoBehaviour
         }
 
         if (!allEnemiesDead && !allPlayersDead) {
+
+            // skipping turns for dead battlers
+            while (activeBattlers[currentTurn].currentHp == 0) {
+                //todo: turn off the objects representing the dead characters
+                currentTurn++;
+                if (currentTurn >= activeBattlers.Count) {
+                    currentTurn = 0;
+                }
+            }
+
             return;
         }
 
@@ -206,7 +224,41 @@ public class BattleManager : MonoBehaviour
         float damageCalculation = (attackPower / defencePower) * movePower * Random.Range(0.9f, 1.1f);
         activeBattlers[target].currentHp -= Mathf.RoundToInt(damageCalculation);
         Debug.Log(activeBattlers[currentTurn].characterName + " is dealing " + Mathf.RoundToInt(damageCalculation) + " damage");
+
+        Instantiate(damageNumber, activeBattlers[target].transform.position, activeBattlers[target].transform.rotation).SetDamage(Mathf.RoundToInt(damageCalculation));
+        UpdateUIStats();
     }
 
+    public void UpdateUIStats()
+    {
+        for (int i = 0 ; i < playerName.Length; i++) {
+            if (activeBattlers.Count > i) {
+                if (activeBattlers[i].isPlayer) {
+                    BattleCharacter playerData = activeBattlers[i];
+                    playerName[i].text = playerData.characterName;
+                    playerHp[i].text = Mathf.Clamp(playerData.currentHp, 0, int.MaxValue) + "/" + playerData.maxHp;
+                    playerMp[i].text = Mathf.Clamp(playerData.currentMp, 0, int.MaxValue) + "/" + playerData.maxMp;
+                }
+            } 
+            playerName[i].gameObject.SetActive(activeBattlers[i].isPlayer && activeBattlers.Count > i);
+        }
+    }
 
+    public void PlayerAttack(string moveName)
+    {
+        int selectedTarget = 2;
+        int movePower =0;
+        for (int i = 0; i < movesList.Length; i++) {
+            if (movesList[i].moveName == moveName) {
+                movePower = movesList[i].movePower;
+                Instantiate(movesList[i].effect, activeBattlers[selectedTarget].transform.position, activeBattlers[selectedTarget].transform.rotation);
+            }
+        }
+
+        Instantiate(enmeyAttackEffect, activeBattlers[currentTurn].transform.position, activeBattlers[currentTurn].transform.rotation);
+        DealDamage(selectedTarget, movePower);
+        
+        UIButtonMenuHolder.SetActive(false);
+        NextTurn();
+    }
 }

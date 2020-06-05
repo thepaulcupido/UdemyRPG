@@ -105,4 +105,4 @@ MonoBehaviour:
   armourPower: 5
   availableMoves:
   - Slash
-  - Plasma
+  - Fire

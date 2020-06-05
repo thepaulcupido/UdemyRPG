@@ -104,5 +104,5 @@ MonoBehaviour:
   weaponPower: 5
   armourPower: 5
   availableMoves:
-  - Fire
   - Ice
+  - Fire
