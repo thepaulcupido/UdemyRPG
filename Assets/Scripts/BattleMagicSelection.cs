@@ -23,20 +23,20 @@ public class BattleMagicSelection : MonoBehaviour
         
     }
 
-public void Press()
-{
-    int currentActor = BattleManager.instance.currentTurn;
+    public void Press()
+    {
+        int currentActor = BattleManager.instance.currentTurn;
 
-    if (BattleManager.instance.activeBattlers[currentActor].currentMp >= manaCost) {
-        BattleManager.instance.magicMenu.SetActive(false);
-        BattleManager.instance.OpenTargetMenu(spellName);
-        BattleManager.instance.activeBattlers[currentActor].currentMp -= manaCost;
-    } else {
-        BattleManager.instance.notification.description.text = "Not Enough MP!";
-        BattleManager.instance.notification.Activate();
-        BattleManager.instance.magicMenu.SetActive(false);
+        if (BattleManager.instance.activeBattlers[currentActor].currentMp >= manaCost) {
+            BattleManager.instance.magicMenu.SetActive(false);
+            BattleManager.instance.OpenTargetMenu(spellName);
+            BattleManager.instance.activeBattlers[currentActor].currentMp -= manaCost;
+        } else {
+            BattleManager.instance.notification.description.text = "Not Enough MP!";
+            BattleManager.instance.notification.Activate();
+            BattleManager.instance.magicMenu.SetActive(false);
+        }
+        
     }
-    
-}
 
 }

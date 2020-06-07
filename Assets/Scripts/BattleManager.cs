@@ -32,6 +32,7 @@ public class BattleManager : MonoBehaviour
     public BattleMagicSelection[] magicButtons;
 
     public BattleNotification notification;
+    public int chanceToFlee = 35;
 
     // private variables
     private bool isBattleActive;
@@ -310,8 +311,6 @@ public class BattleManager : MonoBehaviour
             if (activeBattlers[currentTurn].availableMoves.Length > i) {
                 magicButtons[i].gameObject.SetActive(true);
 
-print(activeBattlers[currentTurn].availableMoves[i]);
-
                 magicButtons[i].spellName = activeBattlers[currentTurn].availableMoves[i];
                 magicButtons[i].nameText.text = activeBattlers[currentTurn].availableMoves[i];
 
@@ -322,6 +321,21 @@ print(activeBattlers[currentTurn].availableMoves[i]);
                     }
                 }
             }
+        }
+    }
+
+    public void Flee()
+    {
+        int fleeSuccess = Random.Range(0,100);
+        if (fleeSuccess < chanceToFlee) {
+            // end the battle
+            isBattleActive = false;
+            battleScene.SetActive(false);
+        } else {
+            notification.description.text = "Could not escape!";
+            notification.Activate();
+            // should have a co-routine to wait for however long the description is on screen for
+            NextTurn();
         }
     }
 }

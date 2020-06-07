@@ -4712,7 +4712,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 647054553}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2127811454}
+        m_MethodName: Flee
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &647054553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27185,6 +27196,7 @@ MonoBehaviour:
   - {fileID: 367845796}
   - {fileID: 1032583149}
   notification: {fileID: 2106567116}
+  chanceToFlee: 35
 --- !u!4 &2127811455
 Transform:
   m_ObjectHideFlags: 0
