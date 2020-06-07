@@ -32,7 +32,9 @@ public void Press()
         BattleManager.instance.OpenTargetMenu(spellName);
         BattleManager.instance.activeBattlers[currentActor].currentMp -= manaCost;
     } else {
-        //todo: Add notification to let player know there is not enough MP
+        BattleManager.instance.notification.description.text = "Not Enough MP!";
+        BattleManager.instance.notification.Activate();
+        BattleManager.instance.magicMenu.SetActive(false);
     }
     
 }

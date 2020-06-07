@@ -31,6 +31,8 @@ public class BattleManager : MonoBehaviour
     public GameObject magicMenu;
     public BattleMagicSelection[] magicButtons;
 
+    public BattleNotification notification;
+
     // private variables
     private bool isBattleActive;
 
