@@ -25,6 +25,8 @@ public class BattleManager : MonoBehaviour
     public DamageCalculations damageNumber;
 
     public Text[] playerName, playerHp, playerMp;
+    public GameObject targetMenu;
+    public BattleTargetButton[] targetButtons;
 
     // private variables
     private bool isBattleActive;
@@ -244,9 +246,9 @@ public class BattleManager : MonoBehaviour
         }
     }
 
-    public void PlayerAttack(string moveName)
+    public void PlayerAttack(string moveName, int selectedTarget)
     {
-        int selectedTarget = 2;
+        //int selectedTarget = 2;
         int movePower =0;
         for (int i = 0; i < movesList.Length; i++) {
             if (movesList[i].moveName == moveName) {
@@ -257,8 +259,38 @@ public class BattleManager : MonoBehaviour
 
         Instantiate(enmeyAttackEffect, activeBattlers[currentTurn].transform.position, activeBattlers[currentTurn].transform.rotation);
         DealDamage(selectedTarget, movePower);
+
+        targetMenu.SetActive(false);
         
         UIButtonMenuHolder.SetActive(false);
         NextTurn();
+    }
+
+    public void OpenTargetMenu(string moveName)
+    {
+        // activate menu
+        targetMenu.SetActive(true);
+
+        List<int> enemyIndices = new List<int>();
+        // update active battler target name
+        for (int i =0; i < activeBattlers.Count; i++) {
+            if (!activeBattlers[i].isPlayer) {
+                enemyIndices.Add(i);
+            }
+        }
+
+        Debug.Log(enemyIndices.Count);
+
+        for (int i = 0; i < targetButtons.Length; i++) {
+
+            targetButtons[i].gameObject.SetActive(false);
+
+            if (enemyIndices.Count > i) {
+                targetButtons[i].gameObject.SetActive(true);
+                targetButtons[i].moveName = moveName;
+                targetButtons[i].activeBattlerTargetIndex = enemyIndices[i];
+                targetButtons[i].targetName.text = activeBattlers[enemyIndices[i]].characterName;
+            }
+        }
     }
 }
