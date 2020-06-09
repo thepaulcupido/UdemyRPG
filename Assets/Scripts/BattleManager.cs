@@ -14,7 +14,7 @@ public class BattleManager : MonoBehaviour
     public BattleCharacter[] enemyPrefabs;
     public List<BattleCharacter> activeBattlers = new List<BattleCharacter>();
 
-    public int currentTurn = 0; // why is this public?
+    public int currentTurn = 0;
     public bool isTurnWaiting = true;
     public GameObject UIButtonMenuHolder;
 
@@ -25,6 +25,14 @@ public class BattleManager : MonoBehaviour
     public DamageCalculations damageNumber;
 
     public Text[] playerName, playerHp, playerMp;
+    public GameObject targetMenu;
+    public BattleTargetButton[] targetButtons;
+
+    public GameObject magicMenu;
+    public BattleMagicSelection[] magicButtons;
+
+    public BattleNotification notification;
+    public int chanceToFlee = 35;
 
     // private variables
     private bool isBattleActive;
@@ -38,7 +46,9 @@ public class BattleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.N)) {
+            
             string[] enemies = {"Skeleton", "Eyeball"};
             BattleStart(enemies);
         }
@@ -244,9 +254,9 @@ public class BattleManager : MonoBehaviour
         }
     }
 
-    public void PlayerAttack(string moveName)
+    public void PlayerAttack(string moveName, int selectedTarget)
     {
-        int selectedTarget = 2;
+        //int selectedTarget = 2;
         int movePower =0;
         for (int i = 0; i < movesList.Length; i++) {
             if (movesList[i].moveName == moveName) {
@@ -257,8 +267,75 @@ public class BattleManager : MonoBehaviour
 
         Instantiate(enmeyAttackEffect, activeBattlers[currentTurn].transform.position, activeBattlers[currentTurn].transform.rotation);
         DealDamage(selectedTarget, movePower);
+
+        targetMenu.SetActive(false);
         
         UIButtonMenuHolder.SetActive(false);
         NextTurn();
+    }
+
+    public void OpenTargetMenu(string moveName)
+    {
+        // activate menu
+        targetMenu.SetActive(true);
+
+        List<int> enemyIndices = new List<int>();
+        // update active battler target name
+        for (int i =0; i < activeBattlers.Count; i++) {
+            if (!activeBattlers[i].isPlayer) {
+                enemyIndices.Add(i);
+            }
+        }
+
+        for (int i = 0; i < targetButtons.Length; i++) {
+
+            targetButtons[i].gameObject.SetActive(false);
+
+            if (enemyIndices.Count > i) {
+                targetButtons[i].gameObject.SetActive(true);
+                targetButtons[i].moveName = moveName;
+                targetButtons[i].activeBattlerTargetIndex = enemyIndices[i];
+                targetButtons[i].targetName.text = activeBattlers[enemyIndices[i]].characterName;
+            }
+        }
+    }
+
+    public void OpenMagicMenu()
+    {
+        magicMenu.SetActive(true);
+
+        for (int i = 0; i < magicButtons.Length; i ++) {
+
+            magicButtons[i].gameObject.SetActive(false);
+
+            if (activeBattlers[currentTurn].availableMoves.Length > i) {
+                magicButtons[i].gameObject.SetActive(true);
+
+                magicButtons[i].spellName = activeBattlers[currentTurn].availableMoves[i];
+                magicButtons[i].nameText.text = activeBattlers[currentTurn].availableMoves[i];
+
+                for (int j = 0; j < movesList.Length; j++) {
+                    if (movesList[j].moveName == magicButtons[i].spellName) {
+                        magicButtons[i].manaCost = movesList[j].moveCost;
+                        magicButtons[i].costText.text = magicButtons[i].manaCost.ToString();
+                    }
+                }
+            }
+        }
+    }
+
+    public void Flee()
+    {
+        int fleeSuccess = Random.Range(0,100);
+        if (fleeSuccess < chanceToFlee) {
+            // end the battle
+            isBattleActive = false;
+            battleScene.SetActive(false);
+        } else {
+            notification.description.text = "Could not escape!";
+            notification.Activate();
+            // should have a co-routine to wait for however long the description is on screen for
+            NextTurn();
+        }
     }
 }

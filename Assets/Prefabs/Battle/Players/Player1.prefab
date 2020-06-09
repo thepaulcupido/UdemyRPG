@@ -95,7 +95,7 @@ MonoBehaviour:
   isPlayer: 1
   isAlive: 1
   characterName: Tim
-  currentHp: 0
+  currentHp: 100
   maxHp: 0
   currentMp: 0
   maxMp: 0
@@ -103,4 +103,6 @@ MonoBehaviour:
   defence: 0
   weaponPower: 0
   armourPower: 0
-  availableMoves: []
+  availableMoves:
+  - Fire
+  - Ice
