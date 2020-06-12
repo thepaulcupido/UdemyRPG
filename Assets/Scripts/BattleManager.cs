@@ -34,6 +34,10 @@ public class BattleManager : MonoBehaviour
     public BattleNotification notification;
     public int chanceToFlee = 35;
 
+    public GameObject itemMenu;
+    public ItemButton[] itemButtons;
+    public Item selectedItem;
+
     // private variables
     private bool isBattleActive;
 
@@ -322,6 +326,34 @@ public class BattleManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void OpenItemMenu()
+    {       
+        itemMenu.SetActive(true);
+
+        bool isButtonActive = false;
+        Item item;
+
+        for (int i = 0; i < itemButtons.Length; i++) {
+            isButtonActive = GameManager.instance.itemsHeld[i] != "" || GameManager.instance.numberOfItems[i] > 0;
+
+            if (isButtonActive) {
+                item = GameManager.instance.GetItemDetails(GameManager.instance.itemsHeld[i]);
+                itemButtons[i].buttonValue = i;
+                itemButtons[i].amountText.text = GameManager.instance.numberOfItems[i].ToString();
+                itemButtons[i].buttonImage.sprite = item.itemSprite;
+            }
+
+            itemButtons[i].gameObject.SetActive(isButtonActive);
+        }
+    }
+
+    public void SelectItem(Item item)
+    {
+        selectedItem = item;
+
+        // launch next menu from here
     }
 
     public void Flee()
