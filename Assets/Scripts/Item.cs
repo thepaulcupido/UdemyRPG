@@ -38,6 +38,7 @@ public class Item : MonoBehaviour
     public void Use(int character) {
         CharacterStats selectedChar = GameManager.instance.playerStats[character];
         
+        // I could avoid some serious code dulpication here if I simply use polymorphism such that this function can apply to both BattleCharacters and CharacterStats
         // This would be better using enumerables and a switch statement
         if (isItem) {
             if (affectsHp) {
@@ -75,5 +76,58 @@ public class Item : MonoBehaviour
 
         GameManager.instance.playerStats[character] = selectedChar;
         GameManager.instance.RemoveItem(itemName);
+    }
+
+    public void Use(BattleCharacter selectedChar)
+    {
+        int index = -1;
+        for (int i = 0; i < BattleManager.instance.activeBattlers.Count; i ++) {
+            if (BattleManager.instance.activeBattlers[i].characterName == selectedChar.characterName) {
+                index = i;
+                break;
+            }
+        }
+
+        if (isItem) {
+            if (affectsHp) {
+                selectedChar.currentHp += itemPower;
+                if (selectedChar.currentHp > selectedChar.maxHp) {
+                    selectedChar.currentHp = selectedChar.maxHp;
+                }
+            } else if (affectsMp) {
+                selectedChar.currentMp += itemPower;
+                if (selectedChar.currentMp > selectedChar.maxMp) {
+                    selectedChar.currentMp = selectedChar.maxMp;
+                }
+            } else if (affectsStr) {
+                selectedChar.strength += itemPower;
+            }
+        }
+
+        if (isWeapon) {
+            // if (selectedChar.equippedWeapn != "" && selectedChar.equippedWeapn != "0") {
+            //     GameManager.instance.AddItem(selectedChar.equippedWeapn);
+            // }
+
+            // selectedChar.equippedWeapn = itemName;
+            selectedChar.weaponPower = weaponStr;
+        }
+
+        if (isArmour) {
+            // if (selectedChar.equippedArmour != "" && selectedChar.equippedArmour != "0") {
+            //     GameManager.instance.AddItem(selectedChar.equippedArmour);
+            // }
+
+            // selectedChar.equippedArmour = itemName;
+            selectedChar.armourPower = armourStr;
+        }
+
+        // GameManager.instance.playerStats[character] = selectedChar;
+
+        if (index > -1) {
+            BattleManager.instance.activeBattlers[index] = selectedChar;
+            BattleManager.instance.UpdateUIStats();
+            GameManager.instance.RemoveItem(itemName);
+        }
     }
 }

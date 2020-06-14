@@ -37,6 +37,11 @@ public class BattleManager : MonoBehaviour
     public GameObject itemMenu;
     public ItemButton[] itemButtons;
     public Item selectedItem;
+    public GameObject itemApplicationMenu;
+    public PlayerItemApplication[] activePlayers;
+    
+    public GameObject[] playerContainer;
+    public BattleCharacter selectedPlayer;
 
     // private variables
     private bool isBattleActive;
@@ -349,11 +354,65 @@ public class BattleManager : MonoBehaviour
         }
     }
 
+    public void OpenItemApplicationMenu()
+    {
+        itemApplicationMenu.SetActive(true);
+
+        for (int j = 0; j < playerContainer.Length; j++) {
+
+            playerContainer[j].SetActive(false);
+
+            for (int i = 0; i < activeBattlers.Count; i++) {
+                if (activeBattlers[i].isPlayer && activePlayers[j].playerName == activeBattlers[i].characterName) {
+                    playerContainer[j].SetActive(true);
+                }
+            }
+        }
+
+    }
+
     public void SelectItem(Item item)
     {
         selectedItem = item;
 
-        // launch next menu from here
+        itemMenu.SetActive(false);
+        OpenItemApplicationMenu();
+        
+    }
+
+    public void SelectPlayer(BattleCharacter player)
+    {
+        selectedPlayer = player;
+        selectedItem.Use(player);
+
+        itemApplicationMenu.SetActive(false);
+
+        selectedItem = null;
+        selectedPlayer = null;
+
+        NextTurn();
+    }
+
+    public void UseItem()
+    {
+        if (selectedItem != null && selectedPlayer != null) {
+
+            for (int i = 0; i < activeBattlers.Count; i++) {
+                if (activeBattlers[i].isPlayer && activePlayers[i].playerName == selectedPlayer.characterName) {
+
+                    // apply the item's effects here
+
+                    selectedItem.Use(activeBattlers[i]);
+                    
+                    itemApplicationMenu.SetActive(false);
+
+                }
+            }
+
+            selectedItem = null;
+            selectedPlayer = null;
+        }
+
     }
 
     public void Flee()

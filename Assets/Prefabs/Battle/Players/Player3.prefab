@@ -95,10 +95,10 @@ MonoBehaviour:
   isPlayer: 1
   isAlive: 1
   characterName: Tim
-  currentHp: 0
-  maxHp: 100
+  currentHp: 100
+  maxHp: 0
   currentMp: 0
-  maxMp: 50
+  maxMp: 0
   strength: 0
   defence: 0
   weaponPower: 0
