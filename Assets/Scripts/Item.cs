@@ -137,13 +137,13 @@ public class Item : MonoBehaviour
 
     private void SyncNewBattleObject(int index, BattleCharacter playerObject)
     {
-        BattleManager.instance.activeBattlers[index].maxHp = playerObject.maxHp;
-        BattleManager.instance.activeBattlers[index].currentHp = playerObject.currentHp;
-        BattleManager.instance.activeBattlers[index].maxMp = playerObject.maxMp;
-        BattleManager.instance.activeBattlers[index].currentMp = playerObject.currentMp;
-        BattleManager.instance.activeBattlers[index].strength = playerObject.strength;
-        BattleManager.instance.activeBattlers[index].defence = playerObject.defence;
-        BattleManager.instance.activeBattlers[index].weaponPower = playerObject.weaponPower;
-        BattleManager.instance.activeBattlers[index].armourPower = playerObject.armourPower;
+        playerObject.maxHp = BattleManager.instance.activeBattlers[index].maxHp;
+        playerObject.currentHp = BattleManager.instance.activeBattlers[index].currentHp ;
+        playerObject.maxMp = BattleManager.instance.activeBattlers[index].maxMp;
+        playerObject.currentMp = BattleManager.instance.activeBattlers[index].currentMp ;
+        playerObject.strength = BattleManager.instance.activeBattlers[index].strength;
+        playerObject.defence = BattleManager.instance.activeBattlers[index].defence ;
+        playerObject.weaponPower = BattleManager.instance.activeBattlers[index].weaponPower ;
+        playerObject.armourPower = BattleManager.instance.activeBattlers[index].armourPower ;
     }
 }
