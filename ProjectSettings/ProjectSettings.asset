@@ -598,7 +598,11 @@ PlayerSettings:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
-    UNet: 1
+    Build: 0
+    Collab: 0
+    ErrorHub: 0
+    Hub: 0
+    UNet: 0
   luminIcon:
     m_Name: 
     m_ModelFolderPath: 
@@ -618,10 +622,10 @@ PlayerSettings:
   facebookXfbml: 0
   facebookFrictionlessRequests: 1
   apiCompatibilityLevel: 2
-  cloudProjectId: 
+  cloudProjectId: b9f34bf8-34eb-4652-95a2-79ff7cbbff8f
   framebufferDepthMemorylessMode: 0
-  projectName: Template_2D
-  organizationId: 
+  projectName: UdemyRPG
+  organizationId: pcupido
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

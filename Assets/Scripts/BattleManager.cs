@@ -34,6 +34,15 @@ public class BattleManager : MonoBehaviour
     public BattleNotification notification;
     public int chanceToFlee = 35;
 
+    public GameObject itemMenu;
+    public ItemButton[] itemButtons;
+    public Item selectedItem;
+    public GameObject itemApplicationMenu;
+    public PlayerItemApplication[] activePlayers;
+    
+    public GameObject[] playerContainer;
+    public BattleCharacter selectedPlayer;
+
     // private variables
     private bool isBattleActive;
 
@@ -233,7 +242,8 @@ public class BattleManager : MonoBehaviour
 
         float damageCalculation = (attackPower / defencePower) * movePower * Random.Range(0.9f, 1.1f);
         activeBattlers[target].currentHp -= Mathf.RoundToInt(damageCalculation);
-        Debug.Log(activeBattlers[currentTurn].characterName + " is dealing " + Mathf.RoundToInt(damageCalculation) + " damage");
+        // Debug.Log("attack: "+ attackPower+ ", defence: " + defencePower + ", move power: " + movePower);
+        // Debug.Log(activeBattlers[currentTurn].characterName + " is dealing " + Mathf.RoundToInt(damageCalculation) + " damage");
 
         Instantiate(damageNumber, activeBattlers[target].transform.position, activeBattlers[target].transform.rotation).SetDamage(Mathf.RoundToInt(damageCalculation));
         UpdateUIStats();
@@ -322,6 +332,88 @@ public class BattleManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void OpenItemMenu()
+    {       
+        itemMenu.SetActive(true);
+
+        bool isButtonActive = false;
+        Item item;
+
+        for (int i = 0; i < itemButtons.Length; i++) {
+            isButtonActive = GameManager.instance.itemsHeld[i] != "" || GameManager.instance.numberOfItems[i] > 0;
+
+            if (isButtonActive) {
+                item = GameManager.instance.GetItemDetails(GameManager.instance.itemsHeld[i]);
+                itemButtons[i].buttonValue = i;
+                itemButtons[i].amountText.text = GameManager.instance.numberOfItems[i].ToString();
+                itemButtons[i].buttonImage.sprite = item.itemSprite;
+            }
+
+            itemButtons[i].gameObject.SetActive(isButtonActive);
+        }
+    }
+
+    public void OpenItemApplicationMenu()
+    {
+        itemApplicationMenu.SetActive(true);
+
+        for (int j = 0; j < playerContainer.Length; j++) {
+
+            playerContainer[j].SetActive(false);
+
+            for (int i = 0; i < activeBattlers.Count; i++) {
+                if (activeBattlers[i].isPlayer && activePlayers[j].playerName == activeBattlers[i].characterName) {
+                    playerContainer[j].SetActive(true);
+                }
+            }
+        }
+
+    }
+
+    public void SelectItem(Item item)
+    {
+        selectedItem = item;
+
+        itemMenu.SetActive(false);
+        OpenItemApplicationMenu();
+        
+    }
+
+    public void SelectPlayer(BattleCharacter player)
+    {
+        selectedPlayer = player;
+        selectedItem.Use(player);
+
+        itemApplicationMenu.SetActive(false);
+
+        selectedItem = null;
+        selectedPlayer = null;
+
+        NextTurn();
+    }
+
+    public void UseItem()
+    {
+        if (selectedItem != null && selectedPlayer != null) {
+
+            for (int i = 0; i < activeBattlers.Count; i++) {
+                if (activeBattlers[i].isPlayer && activePlayers[i].playerName == selectedPlayer.characterName) {
+
+                    // apply the item's effects here
+
+                    selectedItem.Use(activeBattlers[i]);
+                    
+                    itemApplicationMenu.SetActive(false);
+
+                }
+            }
+
+            selectedItem = null;
+            selectedPlayer = null;
+        }
+
     }
 
     public void Flee()

@@ -9,6 +9,7 @@ public class ItemButton : MonoBehaviour
     public Image buttonImage;
     public Text amountText;
     public int buttonValue;
+    //public Text description;
     
     // Start is called before the first frame update
     void Start()
@@ -52,5 +53,13 @@ public class ItemButton : MonoBehaviour
                 }
             }
         }
+
+        if (BattleManager.instance.itemMenu.active)  {
+            if (itemName != "") {
+                item = GameManager.instance.GetItemDetails(itemName);
+                BattleManager.instance.SelectItem(item);
+            }
+        }
+        
     }
 }
