@@ -17,7 +17,7 @@ public class Item : MonoBehaviour
     public Sprite itemSprite;
 
     [Header("Item Details")]
-    public int itemPower;    // rename of amounToChange
+    public int itemPower;    // rename of amountToChange
     public bool affectsHp, affectsMp, affectsStr;
     [Header("Weapon/ Armour Details")]
     public int weaponStr;
@@ -80,13 +80,17 @@ public class Item : MonoBehaviour
 
     public void Use(BattleCharacter selectedChar)
     {
+    
         int index = -1;
+
         for (int i = 0; i < BattleManager.instance.activeBattlers.Count; i ++) {
             if (BattleManager.instance.activeBattlers[i].characterName == selectedChar.characterName) {
                 index = i;
                 break;
             }
         }
+        
+        SyncNewBattleObject(index, selectedChar);
 
         if (isItem) {
             if (affectsHp) {
@@ -129,5 +133,17 @@ public class Item : MonoBehaviour
             BattleManager.instance.UpdateUIStats();
             GameManager.instance.RemoveItem(itemName);
         }
+    }
+
+    private void SyncNewBattleObject(int index, BattleCharacter playerObject)
+    {
+        BattleManager.instance.activeBattlers[index].maxHp = playerObject.maxHp;
+        BattleManager.instance.activeBattlers[index].currentHp = playerObject.currentHp;
+        BattleManager.instance.activeBattlers[index].maxMp = playerObject.maxMp;
+        BattleManager.instance.activeBattlers[index].currentMp = playerObject.currentMp;
+        BattleManager.instance.activeBattlers[index].strength = playerObject.strength;
+        BattleManager.instance.activeBattlers[index].defence = playerObject.defence;
+        BattleManager.instance.activeBattlers[index].weaponPower = playerObject.weaponPower;
+        BattleManager.instance.activeBattlers[index].armourPower = playerObject.armourPower;
     }
 }

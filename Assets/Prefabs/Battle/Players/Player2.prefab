@@ -96,9 +96,9 @@ MonoBehaviour:
   isAlive: 1
   characterName: Woody
   currentHp: 140
-  maxHp: 0
+  maxHp: 150
   currentMp: 0
-  maxMp: 0
+  maxMp: 50
   strength: 0
   defence: 0
   weaponPower: 0
